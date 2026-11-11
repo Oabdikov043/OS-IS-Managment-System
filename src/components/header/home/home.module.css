@@ -1,0 +1,32 @@
+
+.hero {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.shopButton {
+  display: inline-block;
+  background-color: #166534;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.shopButton:hover {
+  background-color: #15803d;
+}
+
+.categoryCard {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.categoryCard:hover {
+  transform: translateY(-4px);
+}

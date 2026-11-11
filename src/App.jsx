@@ -1,59 +1,27 @@
 
-import { useEffect, useState } from 'react';
-import { supabase } from './utils/requests.js';
+import { Routes, Route } from 'react-router';
+import Header from './components/header/Header';
+import Home from './components/header/home/Home';
+import Catalog from './components/Catalog/Catalog';
+import ProductDetails from './components/productdetails/ProductDetails';
+import Footer from './components/footer/Footer';
 
 
-function App() {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
-  useEffect(() => {
-    async function getCategories() {
-      try {
-        const { data, error } = await supabase
-          .from('categories')
-          .select('*');
 
-        if (error) {
-          throw error;
-        }
 
-        setCategories(data ?? []);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getCategories();
-  }, []);
-
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-
-  if (error) {
-    return <h2>Error: {error}</h2>;
-  }
-
+export default function App() {
   return (
-    <div style={{ padding: '40px' }}>
-      <h1>OS&IS Market</h1>
-      <h2>Categories from Supabase:</h2>
+    <>
+      <Header />
 
-      {categories.length === 0 ? (
-        <p>No categories found.</p>
-      ) : (
-        categories.map((category) => (
-          <div key={category.id}>
-            <h3>{category.name}</h3>
-          </div>
-        ))
-      )}
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Catalog />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
+      </Routes>
+
+      <Footer />
+    </>
   );
 }
-
-export default App;
