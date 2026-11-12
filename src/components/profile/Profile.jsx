@@ -2,7 +2,7 @@
 import { useAuth } from '../../contexts/AuthContext';
 
 export default function Profile() {
-  const { user } = useAuth();
+  const { user, role, isAdmin } = useAuth();
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
@@ -18,6 +18,9 @@ export default function Profile() {
         <p>
           <strong>User ID:</strong> {user.id}
         </p>
+
+        <p>Role: {role ?? 'Not loaded'}</p>
+        <p>Is Admin: {isAdmin ? 'Yes' : 'No'}</p>
       </div>
     </main>
   );

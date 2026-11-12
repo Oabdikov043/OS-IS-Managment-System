@@ -7,8 +7,9 @@ import { logout } from '../../services/authService';
 import styles from './Header.module.css';
 
 export default function Header() {
-  const { user, loading } = useAuth();
+  const { user, isAdmin, loading } = useAuth();
   const navigate = useNavigate();
+  
 
   const [logoutError, setLogoutError] = useState('');
   const [loggingOut, setLoggingOut] = useState(false);
@@ -45,6 +46,14 @@ export default function Header() {
           <Link to="/profile" className={styles.navLink}>
             My Profile
           </Link>
+
+          {isAdmin && (
+           <Link to="/admin" className={styles.navLink}>
+              Admin Dashboard
+            </Link>
+)}
+
+          
 
           {!loading && (
             user ? (
