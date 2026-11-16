@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router';
-import styles from './Home.module.css';
+import styles from './home.module.css';
 
 const categories = [
   { id: 1, name: 'Fruits & Vegetables', emoji: '🥦' },
