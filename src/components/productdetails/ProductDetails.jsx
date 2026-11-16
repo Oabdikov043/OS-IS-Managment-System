@@ -5,8 +5,11 @@ import { Link, useParams } from 'react-router';
 import { getProductById } from '../../services/productService';
 import styles from './ProductDetails.module.css';
 
+import {useCart} from '../../contexts/CartContext.jsx';
+
 export default function ProductDetails() {
   const { productId } = useParams();
+  const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -111,14 +114,16 @@ export default function ProductDetails() {
             )}
           </p>
 
-          <button
+          
+        <button
             type="button"
-            disabled
-            className="rounded-lg bg-green-800 px-8 py-3 font-semibold text-white opacity-60"
-            title="Shopping cart coming soon"
-          >
-            Add to Cart — Coming Soon
-          </button>
+            onClick={() => addToCart(product)}
+            disabled={product.stock <= 0}
+            className="rounded-lg bg-green-800 px-8 py-3 font-semibold text-white hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50">
+            {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+        </button>
+
+          
         </div>
       </div>
     </main>

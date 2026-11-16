@@ -14,6 +14,12 @@ import AdminRoute from './components/routeguards/AdminRoute';
 import AdminDashboard from './components/admin/AdminDashboard';
 import CreateProduct from './components/admin/CreateProducts';
 import EditProduct from './components/admin/EditProducts';
+import Cart from './components/cart/Cart';
+import Checkout from './components/checkout/Checkout';
+import MyOrders from './components/orders/MyOrders';
+import AdminOrders from './components/admin/AdminOrders';
+
+
 
 
 
@@ -34,21 +40,31 @@ export default function App() {
             element={<ProductDetails />}
           />
 
+          <Route path="/cart" element={<Cart />} />
+          
+          
+
           {/* Guest Only */}
           <Route element={<GuestRoute />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            
+            
           </Route>
 
           {/* Authenticated Only */}
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
+             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/my-orders" element={<MyOrders />} />
+           
           </Route>
 
           <Route element={<AdminRoute />}>
              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/products/create" element={<CreateProduct />} />
               <Route path="/admin/products/:productId/edit" element={<EditProduct />} />
+              <Route path="/admin/orders" element={<AdminOrders />} />
           </Route>
         </Routes>
       </div>
@@ -56,4 +72,4 @@ export default function App() {
       <Footer />
     </div>
   );
-}
+} 

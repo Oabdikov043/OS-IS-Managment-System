@@ -88,6 +88,14 @@ async function handleDelete(productId, productName) {
         </Link>
       </div>
 
+
+        <Link
+            to="/admin/orders"
+            className="inline-block rounded-lg bg-green-800 px-6 py-3 font-semibold text-white hover:bg-green-700">
+             Manage Orders
+        </Link>
+
+
       <div className="mb-10 grid gap-5 sm:grid-cols-3">
         <StatCard title="Total Products" value={products.length} />
         <StatCard title="In Stock" value={inStock} />

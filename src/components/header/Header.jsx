@@ -6,9 +6,12 @@ import { useAuth } from '../../contexts/AuthContext';
 import { logout } from '../../services/authService';
 import styles from './Header.module.css';
 
+import { useCart } from '../../contexts/CartContext.jsx';
+
 export default function Header() {
   const { user, isAdmin, loading } = useAuth();
   const navigate = useNavigate();
+  const { cartCount } = useCart();
   
 
   const [logoutError, setLogoutError] = useState('');
@@ -45,6 +48,10 @@ export default function Header() {
           </Link>
           <Link to="/profile" className={styles.navLink}>
             My Profile
+          </Link>
+
+          <Link to="/cart" className={styles.navLink}>
+            Cart ({cartCount})
           </Link>
 
           {isAdmin && (
