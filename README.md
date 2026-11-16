@@ -187,6 +187,10 @@ The frontend can be deployed using Vercel.
 
 The application includes product management, authentication, shopping cart functionality, checkout, order history and administrative order processing.
 
+## Live Demo
+
+https://os-is-managment-system.vercel.app
+
 ## Author
 
 Osman Abdikov
